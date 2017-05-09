@@ -232,8 +232,8 @@ private:
 	float sun_y;
 
 	/// Constants
-	static const float END_BOUND = 200.0;
-	static const float WORLD_END = -200.0;
+	static constexpr float END_BOUND = 200.0f;
+	static constexpr float WORLD_END = -200.0f;
 
 	/// Cloud Components (Speed/X/Y)
 	std::list<CloudComponent*> clouds;
