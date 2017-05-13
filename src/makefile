@@ -13,7 +13,7 @@ purge:
 	rm -f $(OBJS) *.o $(TARGET)
 
 build:
-	g++ -o $(TARGET) $(TARGET).cpp $(CFLAGS)
+	$(CC) -o $(TARGET) $(TARGET).cpp $(CFLAGS)
 
 run:
 	@echo "Running..."
