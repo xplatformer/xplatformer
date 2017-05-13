@@ -10,4 +10,4 @@ DIR="$(dirname $SCRIPT)"
 # Environment
 docker run --rm -it \
         -v $(dirname $DIR):/media \
-        jrbeverly/xwindow:privileged sh
+        ubuntu:17.04 sh /media/build/provision.sh && sh

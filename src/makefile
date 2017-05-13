@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS =-L/usr/X11R6/lib -lX11  -lstdc++ 
+CFLAGS = -L/usr/X11R6/lib -lX11 -lstdc++  -std=c++11
 
 FILES = XPlatformer.cpp
 TARGET = XPlatformer
@@ -18,7 +18,3 @@ build:
 run:
 	@echo "Running..."
 	./$(TARGET)
-
-
-
-
