@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS =-L/usr/X11R6/lib -lX11  -lstdc++ 
+CFLAGS =-L/usr/X11R6/lib -lX11 -lstdc++ 
 
 FILES = XPlatformer.cpp
 TARGET = XPlatformer
