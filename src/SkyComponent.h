@@ -8,8 +8,8 @@
 #include <list>
 
 /// Framework libraries
-#include "framework/Displayable.h"
-#include "framework/Logger.h"
+#include "xgamelib/Displayable.h"
+#include "xgamelib/Logger.h"
 
 /// Project libraries
 #include "SkyComponent.h"

@@ -13,12 +13,12 @@
 #include <X11/keysymdef.h>
 
 /// Framework components
-#include "framework/MathHelper.h"
-#include "framework/Displayable.h"
-#include "framework/Spritesheet.h"
-#include "framework/Animation.h"
-#include "framework/Constants.h"
-#include "framework/Logger.h"
+#include "xgamelib/MathHelper.h"
+#include "xgamelib/Displayable.h"
+#include "xgamelib/Spritesheet.h"
+#include "xgamelib/Animation.h"
+#include "xgamelib/Constants.h"
+#include "xgamelib/Logger.h"
 
 /// Project components
 #include "PlayerComponent.h"

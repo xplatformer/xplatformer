@@ -6,7 +6,7 @@
 #include "Blocks.h"
 
 /// Framework components
-#include "framework/Logger.h"
+#include "xgamelib/Logger.h"
 
 ///Number of levels available
 #define LEVEL_COUNT 3
