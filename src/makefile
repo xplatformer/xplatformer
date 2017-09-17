@@ -1,5 +1,4 @@
 CC = g++
-CFLAGS =-L/usr/X11R6/lib -lX11 -lstdc++ 
 
 FILES = XPlatformer.cpp
 TARGET = XPlatformer
@@ -13,7 +12,7 @@ purge:
 	rm -f $(OBJS) *.o $(TARGET)
 
 build:
-	g++ --std=c++11 -o $(TARGET) $(TARGET).cpp $(CFLAGS)
+	g++ --std=c++11 $(TARGET).cpp -o $(TARGET) -L/usr/X11R6/lib -lX11 -lstdc++ -L./lib -lxgame
 
 run:
 	@echo "Running..."
