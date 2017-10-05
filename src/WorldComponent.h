@@ -9,10 +9,10 @@
 #include <cstdio>
 
 /// Framework libraries
-#include "framework/Constants.h"
-#include "framework/Displayable.h"
-#include "framework/Spritesheet.h"
-#include "framework/Logger.h"
+#include "xgamelib/Constants.h"
+#include "xgamelib/Displayable.h"
+#include "xgamelib/Spritesheet.h"
+#include "xgamelib/Logger.h"
 
 /// Project libraries
 #include "WorldComponent.h"

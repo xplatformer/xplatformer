@@ -15,13 +15,13 @@
 #include <X11/keysymdef.h>
 
 /// Utility components
-#include "framework/XInfo.h"
-#include "framework/KeyboardState.h"
-#include "framework/MouseState.h"
-#include "framework/Displayable.h"
-#include "framework/Game.h"
-#include "framework/Constants.h"
-#include "framework/Logger.h"
+#include "xgamelib/XInfo.h"
+#include "xgamelib/KeyboardState.h"
+#include "xgamelib/MouseState.h"
+#include "xgamelib/Displayable.h"
+#include "xgamelib/Game.h"
+#include "xgamelib/Constants.h"
+#include "xgamelib/Logger.h"
 
 /// Project components
 #include "SkyComponent.h"
