@@ -76,3 +76,6 @@ $RECYCLE.BIN/
 *.suo
 src/XPlatformer
 .vscode/
+
+# Documentation:
+docs/**/images/
