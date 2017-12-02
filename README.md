@@ -77,6 +77,6 @@ Or you can even do it without setting the variable:
 
 ## Acknowledgements
 
-The project icon is retrieved from [the Noun Project](docs/icon/icon.json). The original source material has been altered for the purposes of the project. The icon is used under the terms of the [Public Domain](https://creativecommons.org/publicdomain/zero/1.0/).
+The project icon is retrieved from [kenney.nl](docs/icon/icon.json). The original source material has been altered for the purposes of the project. The icon is used under the terms of the [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/).
 
-The project icon is by [Five by Five from the Noun Project](https://thenounproject.com/term/startup/38246/).
+The project icon uses assets by [Kenney from kenney.nl/](http://kenney.nl/assets/platformer-art-deluxe).
