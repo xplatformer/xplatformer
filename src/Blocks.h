@@ -94,9 +94,9 @@ namespace BLOCKS
 		case BLOCK_COIN_SILVER:
 		case BLOCK_COIN_SPECIAL:
 		case BLOCK_PLANK:
-			return false;
-		default:
 			return true;
+		default:
+			return false;
 		}
 	}
 

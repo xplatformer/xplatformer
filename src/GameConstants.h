@@ -30,7 +30,7 @@ namespace GameConstants
 	static const int PLAYER_ANIMATION_COUNT = 7;
 
 	/// The default horizontal velocity of the player present in the PlayerComponent.
-	static int PLAYER_DEFAULT_SPEED = 3;
+	static int PLAYER_DEFAULT_SPEED = 9;
 
 	/// The default vertical acceleration of the player present in the PlayerComponent.
 	static float PLAYER_DEFAULT_JUMP = 3.0f;

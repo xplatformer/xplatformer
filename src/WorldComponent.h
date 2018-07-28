@@ -62,7 +62,7 @@ public:
 		xinfo->setMask(img_mask);	
 		for(int x = 0; x < worldWidth; x++)
 		{
-			int posx = x * blockWidth;
+			int posx = getWorldX(x);
 			for(int y = 0; y < worldHeight; y++)
 			{
 				if(getBlock(x, y) == BLOCK_EMPTY)
@@ -70,12 +70,13 @@ public:
 					continue;
 				}
 
-				int posy = (worldHeight - 1 - y) * blockHeight;
+				int posy = getWorldY(y);
 				int blockVal = getBlock(x, y);
-
+				
 				xinfo->draw(sheet, posx, posy, blockVal);
 			}
 		}
+		
 		xinfo->clearMask();
 		XSetClipMask(_display, _gc, None);
 	}

@@ -155,13 +155,8 @@ public:
 				newDirection = direction;
 			}
 		} 
-
-		state = newState;
-		direction = newDirection;
-
+		
 		applyPhysics(gameTime);
-
-		handleCollision();
 
 		elapsedTime += time * moveSpeed / 2.5;
 
@@ -181,7 +176,7 @@ public:
 
 		float swidth = (float)sheet->getSpriteWidth();
 		float sheight = (float)sheet->getSpriteHeight();
-		dist_To_special = sqrt(swidth * swidth + sheight * sheight) / 2.0;
+		dist_To_special = sqrt(swidth * swidth + sheight * sheight) / 1.5f;
 
 		screenXEdge = (xinfo->getImageWidth() - sheet->getSpriteWidth());
 		screenYEdge = (xinfo->getImageHeight() - sheet->getSpriteHeight());
@@ -207,6 +202,7 @@ public:
 	/// Resets the player to the initial default game state.
 	void reset(void)
 	{
+		sleep(1);
 		state = PLAYER_IDLE;
 		direction = PLAYER_FRONT;
 		health = ALIVE;
@@ -328,7 +324,7 @@ private:
 		Vector2 initialPosition(position->getX(), position->getY());
 
 		xVelocity += movement * moveSpeed * elapsed;
-		yVelocity = MATH::clamp(yVelocity + gravity * elapsed, -maxFallSpeed, maxFallSpeed);
+		yVelocity += MATH::clamp(yVelocity + gravity * elapsed, -maxFallSpeed, maxFallSpeed);
 
 		if (state == PLAYER_JUMP)
 		{
@@ -373,24 +369,27 @@ private:
 		float width = (float)sheet->getSpriteWidth();
 		float height = (float)sheet->getSpriteHeight();
 
-		int leftBlock = MATH::ifloor(bounds->getLeft() / width);
-		int rightBlock = MATH::iceiling((bounds->getRight() / width)) - 1;
-		int topBlock = MATH::ifloor(bounds->getTop() / height);
-		int bottomBlock = MATH::iceiling((bounds->getBottom() / height)) - 1;
+		int topOfIt = (world->getWorldHeight() - 1);
 
-		for(int y = topBlock; y <= bottomBlock; y++)
+		int leftBlock = MATH::ifloor(bounds->getLeft() / width);
+		int rightBlock = MATH::iceiling((bounds->getRight() / width)) + 1;
+		int topBlock = topOfIt - MATH::iceiling(bounds->getTop() / height);
+		int bottomBlock = MATH::iclamp(topOfIt - MATH::ifloor((bounds->getBottom() / height)) - 1, 0, topOfIt);
+
+		for(int y = bottomBlock; y <= topBlock; y++)
 		{
 			for(int x = leftBlock; x <= rightBlock; x++)
 			{
 				Rectangle* wRect = world->getWorldBlock(x, y);
+				
 				int currVal = world->getBlock(x, y);
 
-				if(!BLOCKS::isBlockSolid(currVal))
+				if(!BLOCKS::isBlockSolid(currVal) || BLOCKS::isBlockObjective(currVal))
 				{
 					float xSDist = bounds->getCenterX() - wRect->getCenterX();
 					float ySDist = bounds->getCenterY()- wRect->getCenterY();
 					float distTo = sqrt(xSDist * xSDist + ySDist * ySDist);
-
+					
 					if(distTo < dist_To_special)
 					{
 						handleSpecial(x, y);
@@ -400,7 +399,7 @@ private:
 
 				Vector2* depth = MATH::getIntersectionDepth(bounds, wRect);
 				if (depth->getX() != 0 && depth->getY() != 0)
-				{                	
+				{					
 					float absDepthX = abs(depth->getX());
 					float absDepthY = abs(depth->getY());
 
@@ -421,15 +420,19 @@ private:
 
 							// Perform further collisions with the new bounds.
 							bounds = getBounding();
+
 						}
 					}
 					else if (BLOCKS::isBlockImpassable(currVal)) 
-					{                    	
+					{
 						// Resolve the collision along the X axis.
 						position->move(depth->getX(), 0);
 
 						// Perform further collisions with the new bounds.
 						bounds = getBounding();
+
+						yVelocity = 0;
+						isOnGround = true;
 					}
 				}
 			}
