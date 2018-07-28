@@ -14,18 +14,7 @@ assigned to *XPlatformer*.
 make NAME="XPlatformer"
 ```
 
-Then, to run:
-
-```bash
-./XPlatformer
-```
-
-Or you can even do it without setting the variable:
-
-```bash
-make
-make run
-```
+Or you can even do it by using the scripts available in [build/](build/). You can run the script 
 
 ### Usage
 

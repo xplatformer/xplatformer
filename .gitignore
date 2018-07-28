@@ -79,3 +79,5 @@ src/XPlatformer
 
 # Documentation:
 docs/**/images/
+
+lib/

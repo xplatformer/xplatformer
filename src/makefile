@@ -12,7 +12,7 @@ purge:
 	rm -f $(OBJS) *.o $(TARGET)
 
 build:
-	g++ --std=c++11 $(TARGET).cpp -o $(TARGET) -L/usr/X11R6/lib -lX11 -lstdc++ -I../lib/xgamelib
+	g++ --std=c++11 $(TARGET).cpp -o $(TARGET) -L/usr/X11R6/lib -lX11 -lstdc++ -I../lib/
 
 run:
 	@echo "Running..."
