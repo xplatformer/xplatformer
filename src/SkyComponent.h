@@ -20,10 +20,10 @@ using namespace std;
 
 /// CloudComponent
 ///  Central class for all sky game components.
-class CloudComponent { 
+class CloudComponent {
 public:
 	/// The horizontal movement speed of the cloud.
-	float speed;   
+	float speed;
 
 	/// The horiontal position of the cloud.
 	float x;

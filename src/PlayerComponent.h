@@ -64,7 +64,7 @@ enum PLAYER_ANIM_SPOT
 
 	PLAYER_RUN_RIGHT = 4,
 	PLAYER_STAND_RIGHT = 6,
-	PLAYER_JUMP_RIGHT = 5	
+	PLAYER_JUMP_RIGHT = 5
 };
 
 /// Player Health States.
@@ -86,7 +86,7 @@ public:
 	PlayerComponent(WorldComponent* worldComp)
 	{
 		world = worldComp;
-		player_score = 0;		
+		player_score = 0;
 	}
 
 	/// Disposes of the PlayerComponent instance.
@@ -118,7 +118,7 @@ public:
 
 	/// Overloaded. Updates the Displable component based on recent changes.
 	virtual void update(XInfo* xinfo, GameTime* gameTime)
-	{		
+	{
 		PLAYER_ACTION newState = PLAYER_IDLE;
 		PLAYER_DIRECTION newDirection = PLAYER_FRONT;
 		float time = gameTime->getElapsedDelta();
@@ -154,8 +154,8 @@ public:
 				newState = PLAYER_JUMP;
 				newDirection = direction;
 			}
-		} 
-		
+		}
+
 		applyPhysics(gameTime);
 
 		elapsedTime += time * moveSpeed / 2.5;
@@ -315,7 +315,7 @@ private:
 		float width = (float)sheet->getSpriteWidth();
 		float height = (float)sheet->getSpriteHeight();
 
-		return new Rectangle(left, top, width, height);       
+		return new Rectangle(left, top, width, height);
 	}
 
 	void applyPhysics(GameTime* gameTime)
@@ -381,7 +381,7 @@ private:
 			for(int x = leftBlock; x <= rightBlock; x++)
 			{
 				Rectangle* wRect = world->getWorldBlock(x, y);
-				
+
 				int currVal = world->getBlock(x, y);
 
 				if(!BLOCKS::isBlockSolid(currVal) || BLOCKS::isBlockObjective(currVal))
@@ -389,17 +389,17 @@ private:
 					float xSDist = bounds->getCenterX() - wRect->getCenterX();
 					float ySDist = bounds->getCenterY()- wRect->getCenterY();
 					float distTo = sqrt(xSDist * xSDist + ySDist * ySDist);
-					
+
 					if(distTo < dist_To_special)
 					{
 						handleSpecial(x, y);
 					}
 					continue;
-				} 
+				}
 
 				Vector2* depth = MATH::getIntersectionDepth(bounds, wRect);
 				if (depth->getX() != 0 && depth->getY() != 0)
-				{					
+				{
 					float absDepthX = abs(depth->getX());
 					float absDepthY = abs(depth->getY());
 
@@ -423,7 +423,7 @@ private:
 
 						}
 					}
-					else if (BLOCKS::isBlockImpassable(currVal)) 
+					else if (BLOCKS::isBlockImpassable(currVal))
 					{
 						// Resolve the collision along the X axis.
 						position->move(depth->getX(), 0);
@@ -450,17 +450,17 @@ private:
 	{
 		animations[PLAYER_CENTER] = new Animation(0, 0);
 
-		animations[PLAYER_RUN_LEFT] = new Animation(3, 13); 
-		animations[PLAYER_JUMP_LEFT] = new Animation(25, 25); 
-		animations[PLAYER_STAND_LEFT] = new Animation(1, 1); 
+		animations[PLAYER_RUN_LEFT] = new Animation(3, 13);
+		animations[PLAYER_JUMP_LEFT] = new Animation(25, 25);
+		animations[PLAYER_STAND_LEFT] = new Animation(1, 1);
 
-		animations[PLAYER_RUN_RIGHT] =  new Animation(14, 23); 
-		animations[PLAYER_JUMP_RIGHT] = new Animation(26, 26); 
+		animations[PLAYER_RUN_RIGHT] =  new Animation(14, 23);
+		animations[PLAYER_JUMP_RIGHT] = new Animation(26, 26);
 		animations[PLAYER_STAND_RIGHT] = new Animation(2, 2);
 	}
 
 	int getAnimIndex(PLAYER_ACTION state, PLAYER_DIRECTION direction)
-	{		
+	{
 		if(direction == PLAYER_FRONT)
 		{
 			return PLAYER_CENTER;
@@ -480,7 +480,7 @@ private:
 	}
 
 	void handleAnimation(PLAYER_ACTION newState, PLAYER_DIRECTION newDirection)
-	{		
+	{
 		if(newState != state || newDirection != direction)
 		{
 			int index = getAnimIndex(newState, newDirection);
