@@ -8,15 +8,12 @@ XPlatformer is a simple video game reminiscent of the classic side-scrolling arc
 
 ## Getting Started
 
-To make ("compile and link") an example, use the included makefile with
-the name of cpp file passed as a variable. By default the name variable is
-assigned to *XPlatformer*.
+To make ("compile and link") an example, you can use bazel to build and run the project:
 
 ```bash
-make NAME="XPlatformer"
+bazel build //:xplatformer
+bazel run //:xplatformer
 ```
-
-Or you can even do it by using the scripts available in [build/](build/). You can run the script 
 
 ### Usage
 
