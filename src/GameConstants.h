@@ -1,7 +1,5 @@
-#ifndef _INCL_GCONSTANTS
-#define _INCL_GCONSTANTS
+#pragma once
 
-/// Standard libraries
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
@@ -41,5 +39,3 @@ namespace GameConstants
 	/// The default speed of clouds present in the SkyComponent.
 	static float DEFAULT_SKY_SPEED = 3.0f;
 }
-
-#endif

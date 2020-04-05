@@ -1,17 +1,13 @@
-#ifndef _INCL_SKY
-#define _INCL_SKY
+#pragma once
 
-/// Standard libraries
 #include <cstdlib>
 #include <cstdio>
 #include <cmath>
 #include <list>
 
-/// Framework libraries
-#include "xgamelib/Displayable.h"
-#include "xgamelib/Logger.h"
+#include "lib/Displayable.h"
+#include "lib/Logger.h"
 
-/// Project libraries
 #include "SkyComponent.h"
 #include "GameConstants.h"
 #include "Resources.h"
@@ -52,15 +48,11 @@ public:
 	/// Overloaded. Draws the Displayable component to the screen.
 	virtual void draw(XInfo* xinfo, GameTime* gameTime)
 	{
-		int sx = (int)floor(sun_x);
-		int sy = (int)floor(sun_y);
-
 		//set clipmask for spritesheet
 		xinfo->setMask(img_mask);
 
 		int sunx = (int)floor(sun_x);
 		int suny = (int)floor(sun_y);
-		int count = ccount;
 
 		xinfo->draw(sheet, sunx, suny, 3);
 
@@ -243,6 +235,3 @@ private:
 	XImage* img_sky;
 	Spritesheet* sheet;
 };
-
-#endif
-

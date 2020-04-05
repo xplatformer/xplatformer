@@ -1,5 +1,4 @@
-#ifndef _INCL_PLAYER
-#define _INCL_PLAYER
+#pragma once
 
 /// Standard libraries
 #include <cstdio>
@@ -13,12 +12,12 @@
 #include <X11/keysymdef.h>
 
 /// Framework components
-#include "xgamelib/MathHelper.h"
-#include "xgamelib/Displayable.h"
-#include "xgamelib/Spritesheet.h"
-#include "xgamelib/Animation.h"
-#include "xgamelib/Constants.h"
-#include "xgamelib/Logger.h"
+#include "lib/MathHelper.h"
+#include "lib/Displayable.h"
+#include "lib/Spritesheet.h"
+#include "lib/Animation.h"
+#include "lib/Constants.h"
+#include "lib/Logger.h"
 
 /// Project components
 #include "PlayerComponent.h"
@@ -121,7 +120,6 @@ public:
 	{
 		PLAYER_ACTION newState = PLAYER_IDLE;
 		PLAYER_DIRECTION newDirection = PLAYER_FRONT;
-		float time = gameTime->getElapsedDelta();
 		actionPressed = 0;
 
 		if (isOnGround)
@@ -148,16 +146,17 @@ public:
 				newDirection = PLAYER_RIGHT;
 			}
 
-			if(xinfo->getKeyboardState()->isKeyDown(KEY_J))
-			{
-				movement = ((isPlayerLeft()) ?  -1.0f : 1.0f);
-				newState = PLAYER_JUMP;
-				newDirection = direction;
-			}
+			// if(xinfo->getKeyboardState()->isKeyDown(KEY_J))
+			// {
+			// 	movement = ((isPlayerLeft()) ?  -1.0f : 1.0f);
+			// 	newState = PLAYER_JUMP;
+			// 	newDirection = direction;
+			// }
 		}
 
 		applyPhysics(gameTime);
 
+		float time = gameTime->getElapsedDelta();
 		elapsedTime += time * moveSpeed / 2.5;
 
 		handleAnimation(newState, newDirection);
@@ -219,8 +218,8 @@ public:
 
 		maxFallSpeed = jumpSpeed * 0.13f;
 		maxJumpTime = 0.35f;
-		maxMoveSpeed = moveSpeed * 0.45f;
-		jumpControlPower = 0.14f;
+		maxMoveSpeed = moveSpeed * 1.0f;
+		jumpControlPower = 1.0f;
 		jumpTime = 0.0f;
 
 		actionPressed = 0;
@@ -323,13 +322,15 @@ private:
 		float elapsed = gameTime->getElapsedDelta();
 		Vector2 initialPosition(position->getX(), position->getY());
 
-		xVelocity += movement * moveSpeed * elapsed;
+		xVelocity = movement * moveSpeed * elapsed;
 		yVelocity += MATH::clamp(yVelocity + gravity * elapsed, -maxFallSpeed, maxFallSpeed);
 
 		if (state == PLAYER_JUMP)
 		{
-			if (0.0f < jumpTime && jumpTime <= maxJumpTime)
+			std::cout << jumpTime << std::endl;
+			if (0.0f <= jumpTime && jumpTime <= maxJumpTime)
 			{
+				jumpTime += elapsed;
 				yVelocity = jumpSpeed * (1.0f - (float)pow(jumpTime / maxJumpTime, jumpControlPower));
 			}
 			else
@@ -477,6 +478,8 @@ private:
 		case PLAYER_IDLE:
 			return index + 2;
 		}
+		
+		return index;
 	}
 
 	void handleAnimation(PLAYER_ACTION newState, PLAYER_DIRECTION newDirection)
@@ -631,5 +634,3 @@ private:
 	Animation* currAnimation;
 	Animation* animations[GameConstants::PLAYER_ANIMATION_COUNT];
 };
-
-#endif

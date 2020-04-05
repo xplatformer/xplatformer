@@ -1,5 +1,4 @@
-#ifndef _INCL_BLOCKS
-#define _INCL_BLOCKS
+#pragma once
 
 /// Blocks
 ///	 Blocks defines an enumeration of all the blocks available.
@@ -138,5 +137,3 @@ namespace BLOCKS
 		}
 	}
 }
-
-#endif

@@ -1,12 +1,9 @@
-#ifndef _INCL_LEVELS
-#define _INCL_LEVELS
+#pragma once
 
-/// Project components
 #include "WorldComponent.h"
 #include "Blocks.h"
 
-/// Framework components
-#include "xgamelib/Logger.h"
+#include "lib/Logger.h"
 
 ///Number of levels available
 #define LEVEL_COUNT 3
@@ -150,5 +147,3 @@ namespace Levels
 		}
 	}
 }
-
-#endif
