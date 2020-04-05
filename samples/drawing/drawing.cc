@@ -62,13 +62,13 @@ void drawComponents(XInfo* xinfo, GC gdraw)
 	}
 
 	// draws a series of points that define a triangle, this shape is made of a set of consecutive lines
-	int x = 110;
-	int y = 250;
+	short x = 110;
+	short y = 250;
 	XPoint points[] = {
-		{x + 200, y + 50},
-		{x + 250, y + 80},
-		{x + 200, y + 80},
-		{x + 200, y + 50}
+		{(short)(x + 200), (short)(y + 50)},
+		{(short)(x + 250), (short)(y + 80)},
+		{(short)(x + 200), (short)(y + 80)},
+		{(short)(x + 200), (short)(y + 50)}
 	};
 	int npoints = sizeof(points) / sizeof(XPoint);
 
