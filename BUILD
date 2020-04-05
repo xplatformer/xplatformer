@@ -1,4 +1,4 @@
-load("@rules_cc//cc:defs.bzl", "cc_library")
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
 
 cc_library(
     name = "xgamelib",
@@ -9,6 +9,20 @@ cc_library(
     ],
     visibility = ["//samples:__pkg__"],
     deps = ["@system_libs//:x11"],
+)
+
+cc_binary(
+    name = "xplatformer",
+    srcs = glob([
+        "src/*.cc",
+        "src/*.h",
+    ]),
+    data = [
+        "//:assets",
+    ],
+    deps = [
+        "//:xgamelib",
+    ],
 )
 
 filegroup(

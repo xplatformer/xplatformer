@@ -1,4 +1,3 @@
-/// Standard libraries
 #include <iostream>
 #include <list>
 #include <cstdlib>
@@ -9,21 +8,18 @@
 #include <cstring>
 #include <iostream>
 
-/// X11 libraries
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/keysymdef.h>
 
-/// Utility components
-#include "xgamelib/XInfo.h"
-#include "xgamelib/KeyboardState.h"
-#include "xgamelib/MouseState.h"
-#include "xgamelib/Displayable.h"
-#include "xgamelib/Game.h"
-#include "xgamelib/Constants.h"
-#include "xgamelib/Logger.h"
+#include "lib/XInfo.h"
+#include "lib/KeyboardState.h"
+#include "lib/MouseState.h"
+#include "lib/Displayable.h"
+#include "lib/Game.h"
+#include "lib/Constants.h"
+#include "lib/Logger.h"
 
-/// Project components
 #include "SkyComponent.h"
 #include "SkyComponent.h"
 #include "WorldComponent.h"
@@ -135,7 +131,7 @@ public:
 			std::string cmdparam(argv[i]);
 			const char* cmd = cmdparam.c_str();
 			int eq = strchr(cmd, '=') - cmd + 1;
-			if(eq < 0 || eq >= cmdparam.length())
+			if (eq < 0 || eq >= (int)cmdparam.length())
 			{
 				continue;
 			}
@@ -201,7 +197,7 @@ private:
 	WorldComponent* world;
 	PlayerComponent* player;
 	SkyComponent* sky;
-	int level;
+	int level = 0;
 	bool isPaused;
 
 	/// Determines if the command is within the string.
@@ -319,6 +315,6 @@ int main(int argc, char *argv[])
 
 	xinfo->setIcon(Resources::ASSET_ICON);
 	xinfo->initialize(argc, argv);
-	game.setByCommand(argc, argv);	
+	game.setByCommand(argc, argv);
 	game.run(xinfo);
 }

@@ -1,20 +1,16 @@
-#ifndef _INCL_WORLDCOMPONENT
-#define _INCL_WORLDCOMPONENT
+#pragma once
 
-/// Standard libraries
 #include <cstdio>
 #include <sstream>
 #include <cmath>
 #include <string>
 #include <cstdio>
 
-/// Framework libraries
-#include "xgamelib/Constants.h"
-#include "xgamelib/Displayable.h"
-#include "xgamelib/Spritesheet.h"
-#include "xgamelib/Logger.h"
+#include "lib/Constants.h"
+#include "lib/Displayable.h"
+#include "lib/Spritesheet.h"
+#include "lib/Logger.h"
 
-/// Project libraries
 #include "WorldComponent.h"
 #include "GameConstants.h"
 #include "Blocks.h"
@@ -54,9 +50,6 @@ public:
 
 		//background (no need for clipmask)
 		XPutImage(_display, xinfo->getImageBuffer(), _gc, img_background, 0, 0,	0, 0, img_background->width, img_background->height);
-
-		int blockWidth = sheet->getSpriteWidth();
-		int blockHeight = sheet->getSpriteHeight();
 
 		//XSetClipMask(_display, _gc, img_mask);
 		xinfo->setMask(img_mask);	
@@ -125,8 +118,7 @@ public:
 	{
 		background  = id;
 		const char* fileBackground = getWorldBackground(background);
-		bool success = xinfo->loadImage(fileBackground, &img_background);
-
+		bool success = xinfo->loadImage(fileBackground, &img_background);		
 		if(!success)
 		{
 			Logger::application_debug(Logger::LOG_ASSETERROR, fileBackground);
@@ -252,7 +244,7 @@ public:
 	///  @x The x-coordinate (in world grid coordinates) of the level.
 	///  @y The y-coordinate (in world grid coordinates) of the level.
 	///  @val The value to set to the value.
-	int setBlock(int x, int y, int val)
+	void setBlock(int x, int y, int val)
 	{
 		int index = getWorldIndex(x, y);
 		int currVal = grid[index];
@@ -314,5 +306,3 @@ private:
 	int worldHeight;
 	int* grid;
 };
-
-#endif
