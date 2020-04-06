@@ -1,5 +1,5 @@
 theme: jekyll-theme-minimal
 title: XPlatformer
 description: XPlatformer is a simple video game reminiscent of the classic side-scrolling arcade game.
-logo: docs/icon/xplatformer/icon.svg
+logo: icon/xplatformer/icon.svg
 show_downloads: false
