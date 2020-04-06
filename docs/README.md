@@ -9,6 +9,8 @@ XPlatformer is a simple video game reminiscent of the classic side-scrolling arc
 * Levels
 * User Interaction (Key collection, opening lock boxes)
 
+You can see some of the screenshots [here](screenshots.md).
+
 ## Key Controls
 
 The application is controlled by the following key commands.
