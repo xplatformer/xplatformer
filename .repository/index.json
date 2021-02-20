@@ -1,0 +1,20 @@
+{
+  "slug": "xplatformer",
+  "namespace": "xplatformer",
+  "status": "archived",
+  "icon": "icon.svg",
+  "license": {
+    "type": "MIT",
+    "content": "Jonathan Beverly <jrbeverly>"
+  },
+  "topics": [
+    "platformer",
+    "game-development"
+  ],
+  "languages": [
+    "C++",
+    "Dockerfile",
+    "Shell",
+    "Starlark"
+  ]
+}
