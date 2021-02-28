@@ -12,6 +12,7 @@
     "game-development"
   ],
   "languages": [
+    "C",
     "C++",
     "Dockerfile",
     "Shell",
