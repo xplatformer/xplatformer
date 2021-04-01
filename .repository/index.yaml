@@ -1,0 +1,15 @@
+slug: xplatformer
+description: XPlatformer is a simple video game reminiscent of the classic side-scrolling arcade game.
+project: xplatformer
+namespace:
+status: archived
+icon: icon.svg
+license:
+  type: MIT
+  content: Jonathan Beverly <jrbeverly>
+  year: 2017
+topics: |-
+  [
+    "platformer",
+    "game-development"
+  ]
